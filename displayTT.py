@@ -1,6 +1,7 @@
 import streamlit as st
 from constants import TT_SLOTS, DAYS
 from utils import fetch_tt_data, remove_duplicates, authenticate_tt_id
+from constants import MESSSAGE
 
 st.session_state["isloggedin"] = False
 
@@ -85,9 +86,16 @@ def display_tt():
                 emoji = data[0][_id][name]["emoji"]
                 st.write(f"{emoji}: {name}")
                 
-        except UnboundLocalError:
-            st.write("<center><h1>Oops, looks like you've encoutered a bug. Please reload the page, I'm sure it'll work then. If it doesn't, then please contact me, I've a lot of free time.</h1></center>", unsafe_allow_html=True)
-            
+            with st.expander("Invite your friends"):
+                st.caption("Click the copy button below to copy the message to your clipboard, send it to your friends, and invite them to join your Time Table!")
+                st.write(MESSSAGE.format(tt_id=st.session_state["tt_id"]))
+                
+        except Exception:
+            with st.columns([1,4,1])[1]:
+                st.write("<center><h3>Oopsies, looks like you've encoutered an error. Please reload the page, I'm sure it'll work then.</h3></center><br><br>", unsafe_allow_html=True)
+            with st.columns([1,2,1])[1]:
+                st.image("./assets/sad-ant.png")
+            st.write("<center><h5 style='color:#9c9d9f;'>If it doesn't, then please contact me, I've a lot of free time.</h5></center><br><br>", unsafe_allow_html=True)
         
 if __name__ == "__main__":
     st.set_page_config(page_title="Time Table", page_icons="📅", layout="wide")
