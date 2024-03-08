@@ -8,6 +8,7 @@ st.markdown('<style>' + open('./assets/style.css').read() + '</style>', unsafe_a
 
 
 with st.sidebar:
+    st.image('./assets/logo.png')
     tabs = on_hover_tabs(tabName=['View My TT', 'Join/Create TT', 'Heyp Me', 'About Me'], 
                          iconName=['home', 'add_circle', 'help', 'info'], default_choice=0)
 
