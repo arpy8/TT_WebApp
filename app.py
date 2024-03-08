@@ -9,9 +9,9 @@ st.markdown('<style>' + open('./assets/style.css').read() + '</style>', unsafe_a
 
 with st.sidebar:
     tabs = on_hover_tabs(tabName=['View My TT', 'Join/Create TT', 'Heyp Me', 'About Me'], 
-                         iconName=['home', 'add_circle', 'help', 'info'], default_choice=2)
+                         iconName=['home', 'add_circle', 'help', 'info'], default_choice=0)
 
-if tabs =='View     My TT':
+if tabs =='View My TT':
     display_tt()
 
 elif tabs == 'Join/Create TT':

@@ -7,7 +7,8 @@ st.session_state["isloggedin"] = False
 
 def display_tt():
     # """----------------------------------------------- HEADER ----------------------------------------------------------"""
-    st.write("<center><h1>TT WebApp</h1></center><br>", unsafe_allow_html=True)
+    st.write("<center><h1>TT WebApp</h1></center>", unsafe_allow_html=True)
+    st.write("<center><h3>TT View Your Time Table</h3></center><br><br>", unsafe_allow_html=True)
 
     # """-------------------------------------------- NAME &  EMOJI ------------------------------------------------------"""
     column = st.empty()

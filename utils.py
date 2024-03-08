@@ -3,9 +3,9 @@ import random
 import string
 from pymongo import MongoClient
 
-mongo_url = os.environ["mongo_url"]
-db_name = os.environ["db_name"]
-records_name = os.environ["records_name"]
+mongo_url = "mongodb+srv://admin:admin123@cluster0.vttxhsu.mongodb.net/?retryWrites=true&w=majority"
+db_name = "time_table_db"
+records_name = "time_table"
 
 client = MongoClient(mongo_url)
 db = client.get_database(db_name)
