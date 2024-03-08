@@ -1,6 +1,7 @@
 SELECTED = " ✅"
-EMOJIS = ["🐶", "🐱", "🐭", "🐹", "🐰", "🦊", "🐻", "🐼"]
+EMOJIS = [ '🎀', '🐶', '🐱', '🐭', '🐹', '🐰', '🦊', '🦝', '🐻', '🐼', '🦄', '🐴', '🐎', '🐮', '🐷', '🐽', '🐸', '🐔', '🐣', '🐥', '🦆', '🦢', '🦉', '🦚', '🦜', '🐺', '🐗', '🐴', '🦓', '🦌', '🐃', '🐄', '🐖', '🐏', '🐑', '🐐', '🐪', '🐫', '🦙', '🦒', '🦏', '🐘', '🦣', '🦛', '🦘', '🦥', '🐿️', '🦔', '🐾',]
 DAYS = ["", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
+
 TT_SLOTS = {
     "C1R0": "8:30-10:00",
     "C2R0": "10:05-11:35",
@@ -50,3 +51,14 @@ TT_SLOTS = {
     "C7R5": "A24",
     "C8R5": "B24",
 }
+
+MESSSAGE = """
+```markdown
+Hey there! 🕒 I've created a Time Table on the TT WebApp, and I'd love for you to join.
+
+🔗 *Link*: https://tt-webapp.onrender.com/
+🆔 *Code*: {tt_id}
+
+Simply click on the link, enter the code, and let's stay organized together! ⏰
+```
+"""
