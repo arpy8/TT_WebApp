@@ -3,13 +3,13 @@ import random
 import string
 from pymongo import MongoClient
 
-from secret import records, mongo_url, db_name
-
 mongo_url = os.environ("mongo_url")
+db_name = os.environ("db_name")
+records_name = os.environ("records_name")
 
 client = MongoClient(mongo_url)
 db = client.get_database(db_name)
-records = db.get_collection(records)
+records = db.get_collection(records_name)
 
 def remove_duplicates(input_str):
     unique_chars = []
