@@ -1,0 +1,34 @@
+<h1>TT WebApp</h1>
+<p>This is a simple web app to know the free slots of your friends and yourself. You can create a new time table or join an existing one. You can also view your time table and your friend's time table.</p>
+<hr>
+<h3>Viewing a time table</h3>
+<p>
+    <ol>
+        <li>Go to View My TT Section {if you do not have a unique TT id, refer the next section}.</li>
+        <li>Enter your unique TT id.</li>
+        <li>Press Submit.</li>
+    </ol>
+    And that's it, once you press submit you'll be able to see a     of all your friends and yourself.
+</p>
+<h3>Creating a new time table</h3>
+<p>
+    <ol>
+        <li>Go to Join/Create Section.</li>
+        <li>Enter your name and select any emoji of your choice.</li>
+        <li>Leave the Unique TT ID section blank for now.</li>
+        <li>Select the slots in your Time Table by double-clicking each slot.</li>
+        <li>Press Submit.</li>
+    </ol>
+    And that's it, once you press submit you will receive your unique time table key, share this id with your friends to allow them to join your time table.
+</p>
+<h3>Joining a time table</h3>
+<p>
+    <ol>
+        <li>Go to Join/Create Section.</li>
+        <li>Enter your name and select any emoji of your choice.</li>
+        <li>Fill in the Unique TT ID given by your friend.</li>
+        <li>Select the slots in your Time Table by double-clicking each slot.</li>
+        <li>Press Submit.</li>
+    </ol>
+    And that's it, enter the unique ID on the View My TT page and you will be able to see your and your friend's time table.
+</p>
