@@ -8,7 +8,8 @@ st.session_state["isloggedin"] = False
 def display_tt():
     # """----------------------------------------------- HEADER ----------------------------------------------------------"""
     st.write("<center><h1>TT WebApp</h1></center>", unsafe_allow_html=True)
-    st.write("<center><h3>TT View Your Time Table</h3></center><br><br>", unsafe_allow_html=True)
+    temp = st.empty()
+    temp.write("<center><h3>View Your Time Table</h3></center><br><br>", unsafe_allow_html=True)
 
     # """-------------------------------------------- NAME &  EMOJI ------------------------------------------------------"""
     column = st.empty()
@@ -22,15 +23,17 @@ def display_tt():
     with mid_col:
         with st.form(key="login"):
             tt_id = st.text_input("Unique Time Table ID:", help="To join a time table, ask the creator for the unique time table id and enter it below. If you are the creator, then enter the unique time table id and select the 'Create' button.")
-            if st.form_submit_button("Submit", use_container_width=True) and authenticate_tt_id(tt_id):
+            if st.form_submit_button("Submit", use_container_width=True) and authenticate_tt_id(str(tt_id.upper().replace(" ", "")).strip()):
                 st.session_state["isloggedin"] = True
-                _id = st.session_state["tt_id"] = tt_id.upper()
+                _id = st.session_state["tt_id"] = str(tt_id.upper().replace(" ", "")).strip()
                 st.toast("Logged in successfully!", icon="🎉")
                 
             st.caption("Go to Join/Create TT section to create a new time table or join an existing one.")
                 
     if st.session_state["isloggedin"]:
         column.empty()
+        temp.write("<br><br>", unsafe_allow_html=True)
+        
         tt_slots_copy = TT_SLOTS.copy()
 
         for key in tt_slots_copy:
