@@ -67,7 +67,7 @@ def insert_user():
         emoji = st.session_state["emoji"]
         tt_slots = list(st.session_state["user_time_table"])
         
-        if "name"  is "":
+        if name == "":
             st.toast("Please fill the name and emoji.")
         elif len(tt_slots) == 0:
             st.toast("Please select at least 1 time slot.")
