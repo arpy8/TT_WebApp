@@ -1,5 +1,5 @@
 import streamlit as st
-from const import TT_SLOTS, DAYS
+from constants import TT_SLOTS, DAYS
 from utils import fetch_tt_data, remove_duplicates, authenticate_tt_id
 
 st.session_state["isloggedin"] = False
@@ -9,7 +9,7 @@ def display_tt():
     # """----------------------------------------------- HEADER ----------------------------------------------------------"""
     st.write("<center><h1>TT WebApp</h1></center>", unsafe_allow_html=True)
     temp = st.empty()
-    temp.write("<center><h3>View Your Time Table</h3></center><br><br>", unsafe_allow_html=True)
+    temp.write("<center><h3>View Your Time Table</h3></center><br>", unsafe_allow_html=True)
 
     # """-------------------------------------------- NAME &  EMOJI ------------------------------------------------------"""
     column = st.empty()
@@ -22,12 +22,16 @@ def display_tt():
     
     with mid_col:
         with st.form(key="login"):
-            tt_id = st.text_input("Unique Time Table ID:", help="To join a time table, ask the creator for the unique time table id and enter it below. If you are the creator, then enter the unique time table id and select the 'Create' button.")
-            if st.form_submit_button("Submit", use_container_width=True) and authenticate_tt_id(str(tt_id.upper().replace(" ", "")).strip()):
+            tt_id = st.text_input("Unique Time Table ID:", help="To join a time table, ask the creator for the unique time table id and enter it below. If you are the creator, then enter the unique time table id and select the 'Submit' button.")
+            submit_button = st.form_submit_button("Submit", use_container_width=True)
+            
+            if submit_button and authenticate_tt_id(str(tt_id.upper().replace(" ", "")).strip()):
                 st.session_state["isloggedin"] = True
                 _id = st.session_state["tt_id"] = str(tt_id.upper().replace(" ", "")).strip()
                 st.toast("Logged in successfully!", icon="🎉")
-                
+            elif submit_button and not authenticate_tt_id(str(tt_id.upper().replace(" ", "")).strip()):
+                st.toast("Invalid Time Table ID!", icon="🚫")
+            
             st.caption("Go to Join/Create TT section to create a new time table or join an existing one.")
                 
     if st.session_state["isloggedin"]:

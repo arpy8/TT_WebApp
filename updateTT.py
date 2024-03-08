@@ -1,6 +1,6 @@
 import streamlit as st
-from const import TT_SLOTS, EMOJIS, DAYS, SELECTED
-from utils import authenticate_tt_id, update_time_table, add_time_table
+from constants import TT_SLOTS, EMOJIS, DAYS, SELECTED
+from utils import authenticate_tt_id, update_time_table, add_time_table, map_slot
 
 # st.set_page_config(layout="wide")
 
@@ -23,8 +23,11 @@ def insert_user():
     st.write("<center><h3 style='padding:15px 0 20px 0; font-size:25px; color:#9c9d9f;'>Select your slots</h3></center>", unsafe_allow_html=True)
 
     st_columns = st.columns([2,4,4,4,1,4,4,4,4])
+    
     if "user_time_table" not in st.session_state:
         st.session_state["user_time_table"]=set()
+    if "user_time_table_copy" not in st.session_state:
+        st.session_state["user_time_table_copy"]=set()
 
     for i in range(0, len(st_columns)):
         for j in range(6):
@@ -53,12 +56,13 @@ def insert_user():
                     
                     if SELECTED in button_text and button_text not in st.session_state["user_time_table"]:
                         st.session_state["user_time_table"].add(string)
+                        st.session_state["user_time_table_copy"].add(TT_SLOTS[string])
                         
                     elif SELECTED not in st.session_state["user_time_table"] and button_text in st.session_state["user_time_table"]:
                         st.session_state["user_time_table"].remove(string)
+                        st.session_state["user_time_table_copy"].remove(TT_SLOTS[string])
 
-    st.write(f"<center style='color:#9c9d9f;font-size:15px;'>{st.session_state['user_time_table']}</center>", unsafe_allow_html=True)
-    st.write("<br>", unsafe_allow_html=True)
+    st.write(f"<center style='color:#9c9d9f;font-size:15px;'>{'' if len(st.session_state['user_time_table_copy'])==0 else st.session_state['user_time_table_copy']}</center><br>", unsafe_allow_html=True)
 
     # """-------------------------------------------- SUBMIT ------------------------------------------------------"""
     if st.button("Submit", use_container_width=True):
