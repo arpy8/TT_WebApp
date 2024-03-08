@@ -68,7 +68,7 @@ def display_tt():
                         elif j==0:
                             st.write(f"<center><b><h5 style='color: #9c9d9f;'>{TT_SLOTS[string]}</h5></b></center>", unsafe_allow_html=True)
                             continue
-                        elif tt_slots_copy[string] is not "":
+                        elif tt_slots_copy[string] != "":
                             st.button(tt_slots_copy[string], use_container_width=True, key=f"button_{string}_{0}", help=f"This is slot {TT_SLOTS[string]}")
                             continue
                         else:
