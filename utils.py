@@ -3,13 +3,22 @@ import random
 import string
 from pymongo import MongoClient
 
-mongo_url = "mongodb+srv://admin:admin123@cluster0.vttxhsu.mongodb.net/?retryWrites=true&w=majority"
-db_name = "time_table_db"
-records_name = "time_table"
+from constants import TT_SLOTS
+# from dotenv import load_dotenv
+
+# load_dotenv()
+
+mongo_url = os.environ["mongo_url"]
+db_name = os.environ["db_name"]
+records_name = os.environ["records_name"]
 
 client = MongoClient(mongo_url)
 db = client.get_database(db_name)
 records = db.get_collection(records_name)
+
+
+def map_slot(tt_slot):
+    return TT_SLOTS[tt_slot]
 
 def remove_duplicates(input_str):
     unique_chars = []
@@ -28,6 +37,9 @@ def get_all_tt_ids():
      
 def add_time_table(name, emoji, tt_slots):
     tt_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 6))
+    if tt_id in get_all_tt_ids():
+        tt_id = ''.join(random.choices(string.ascii_uppercase + string.digits, k = 6))
+    
     data = {
         "tt_id": tt_id,
         tt_id:{
@@ -86,10 +98,3 @@ def fetch_tt_data(tt_id):
     for document in documents:
         temp_list.append(document)
     return temp_list
-
-if __name__=="__main__":
-    # tt_id = add_time_table("test_user", "😭", ['A11', 'B11', 'C11',"sdasd", "sdada"])
-    # print(update_time_table("V3IOGQ", "user_{i}", "😭", ['aaa{i}', 'BBB{i+1}', 'CCC{i+2}']))
-    print(get_all_tt_ids())
-    # print(get_all_tt_ids())
-    # print(fetch_tt_data("121212"))
