@@ -6,7 +6,7 @@ from pymongo import MongoClient
 from constants import TT_SLOTS
 from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 mongo_url = os.environ["mongo_url"]
 db_name = os.environ["db_name"]
