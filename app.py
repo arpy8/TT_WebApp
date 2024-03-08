@@ -27,4 +27,4 @@ elif tabs == 'Heyp Me':
     st.write(open('./assets/heyp.html', 'r', encoding='cp1252').read(), unsafe_allow_html=True)
 
 elif tabs == 'About Me':
-    st.title("I am arpy8")
+    st.title("Hi, I am arpy8")
