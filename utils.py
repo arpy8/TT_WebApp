@@ -6,9 +6,6 @@ from pymongo import MongoClient
 from secret import records, mongo_url, db_name
 
 mongo_url = os.environ("mongo_url")
-db = os.environ("time_table_db")
-records = os.environ("time_table")
-
 
 client = MongoClient(mongo_url)
 db = client.get_database(db_name)
