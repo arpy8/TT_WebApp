@@ -4,7 +4,7 @@ import string
 from pymongo import MongoClient
 
 from constants import TT_SLOTS
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 # load_dotenv()
 
