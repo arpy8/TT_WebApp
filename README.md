@@ -32,3 +32,6 @@
     </ol>
     And that's it, enter the unique ID on the View My TT page and you will be able to see your and your friend's time table.
 </p>
+<hr>
+
+    Info: The current web app is kinda buggy and slow, I will soon shift this to a proper full-stack website using react, turns out you can't really use streamlit for everything 😓
